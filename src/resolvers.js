@@ -1,9 +1,13 @@
 module.exports = {
   Query: {
     meetings: (_, __, { dataSources }) =>
-      dataSources.meetingApi.getAllMeetings(),
+      dataSources.meetingAPI.getAllMeetings(),
     meeting: (_, { id }, { dataSources }) =>
-      dataSources.meetingApi.getMeetingById({ id }),
+      dataSources.meetingAPI.getMeetingById({ id }),
+    recording: (_, __, { dataSources }) =>
+      dataSources.recordingAPI.getAllRecordings(),
+    recordings: (_, { meetingId }, { dataSources }) =>
+      dataSources.recordingAPI.getRecordingByMeetingId({ meetingId }),
   },
   Mutation: {
     createMeeting: async (
@@ -11,7 +15,7 @@ module.exports = {
       { name, id, duration, moderatorPassword, attendeePassword },
       { dataSources }
     ) => {
-      const result = await dataSources.meetingApi.createMeeting({
+      const result = await dataSources.meetingAPI.createMeeting({
         name,
         id,
         duration,
@@ -24,7 +28,7 @@ module.exports = {
       }
     },
     endMeeting: async (_, { id, moderatorPassword }, { dataSources }) => {
-      const result = await dataSources.meetingApi.endMeeting({
+      const result = await dataSources.meetingAPI.endMeeting({
         id,
         moderatorPassword,
       })

@@ -2,14 +2,16 @@ require('dotenv').config()
 
 const { ApolloServer } = require('apollo-server')
 const typeDefs = require('./schema')
-const MeetingApi = require('./datasources/meeting')
+const MeetingAPI = require('./datasources/meeting')
+const RecordingAPI = require('./datasources/recording')
 
 const resolvers = require('./resolvers')
 
 const server = new ApolloServer({
   typeDefs,
   dataSources: () => ({
-    meetingApi: new MeetingApi(),
+    meetingAPI: new MeetingAPI(),
+    recordingAPI: new RecordingAPI(),
   }),
   resolvers,
 })
