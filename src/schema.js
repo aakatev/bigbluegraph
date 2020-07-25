@@ -37,6 +37,8 @@ const typeDefs = gql`
     name: String!
     created: String!
     running: Boolean!
+    moderatorPassword: String!
+    attendeePassword: String!
   }
 
   type Recording {

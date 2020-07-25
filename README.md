@@ -23,6 +23,8 @@ query GetMeetingsById {
     id
     name
     running
+    attendeePassword
+    moderatorPassword
   }
 }
 
@@ -54,6 +56,7 @@ query GetRecording {
     id
     meetingId
     published
+    url
   }
 }
 
@@ -62,6 +65,7 @@ query GetRecordingByMeetingId1 {
     id
     meetingId
     published
+    url
   }
 }
 
@@ -70,6 +74,7 @@ query GetRecordingByMeetingId2 {
     id
     meetingId
     published
+    url
   }
 }
 

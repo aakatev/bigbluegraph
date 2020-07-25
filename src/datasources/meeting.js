@@ -65,6 +65,8 @@ class MeetingAPI extends RESTDataSource {
       name: meeting.meetingName,
       created: meeting.createTime,
       running: meeting.running,
+      moderatorPassword: meeting.moderatorPW,
+      attendeePassword: meeting.attendeePW,
     }
   }
 }
