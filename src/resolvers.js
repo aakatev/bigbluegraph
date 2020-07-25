@@ -7,7 +7,7 @@ module.exports = {
     recording: (_, { id }, { dataSources }) =>
       dataSources.recordingAPI.getRecordingById({ id }),
     recordings: (_, { meetingId }, { dataSources }) =>
-      dataSources.recordingAPI.getRecordingByMeetingId({ meetingId }),
+      dataSources.recordingAPI.getRecordingsByMeetingId({ meetingId }),
   },
   Mutation: {
     createMeeting: async (

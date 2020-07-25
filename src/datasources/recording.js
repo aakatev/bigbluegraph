@@ -10,7 +10,7 @@ class RecordingAPI extends RESTDataSource {
     this.baseURL = process.env.BBB_URL
   }
 
-  async getRecordingByMeetingId({ meetingId }) {
+  async getRecordingsByMeetingId({ meetingId }) {
     const pathname = api.recording.getRecordings({ meetingID: meetingId })
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
@@ -21,7 +21,7 @@ class RecordingAPI extends RESTDataSource {
     return recordings.map((recording) => this.recordingReducer(recording))
   }
 
-  getRecordingByMeetingIds({ meetingIds }) {
+  getRecordingsByMeetingIds({ meetingIds }) {
     return Promise.all(
       meetingIds.map((id) => this.getRecordingByMeetingId({ id }))
     )
@@ -37,7 +37,7 @@ class RecordingAPI extends RESTDataSource {
       : null
   }
 
-  getRecordingByMeetingIds({ ids }) {
+  getRecordingByIds({ ids }) {
     return Promise.all(ids.map((id) => this.getRecordingId({ id })))
   }
 
