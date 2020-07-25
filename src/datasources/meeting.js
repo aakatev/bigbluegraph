@@ -35,6 +35,27 @@ class MeetingAPI extends RESTDataSource {
     return Promise.all(ids.map((id) => this.getMeetingById({ id })))
   }
 
+  async createMeeting({
+    name,
+    id,
+    duration,
+    moderatorPassword,
+    attendeePassword,
+  }) {
+    const pathname = api.administration.create(name, id, {
+      moderatorPW: moderatorPassword,
+      attendeePW: attendeePassword,
+      duration,
+    })
+
+    const xml = await this.get(pathname)
+    const json = parseXml(xml).response
+
+    console.log(json)
+
+    return json.returncode === 'SUCCESS' ? json : null
+  }
+
   meetingReducer(meeting) {
     return {
       id: meeting.meetingID,

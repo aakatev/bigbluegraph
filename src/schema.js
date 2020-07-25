@@ -6,6 +6,20 @@ const typeDefs = gql`
     meeting(id: ID!): Meeting
   }
 
+  type Mutation {
+    createMeeting(
+      name: String!
+      id: String!
+      duration: Int!
+      moderatorPassword: String!
+      attendeePassword: String!
+    ): CreateMeetingResponse
+  }
+
+  type CreateMeetingResponse {
+    success: Boolean!
+  }
+
   type Meeting {
     id: ID!
     name: String!
