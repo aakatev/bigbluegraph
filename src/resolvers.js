@@ -32,6 +32,11 @@ module.exports = {
         id,
         moderatorPassword,
       })
+      if (!result) {
+        return {
+          success: false,
+        }
+      }
 
       return {
         success: true,

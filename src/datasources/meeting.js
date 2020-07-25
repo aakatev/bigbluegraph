@@ -1,5 +1,5 @@
 const { RESTDataSource } = require('apollo-datasource-rest')
-const bbb = require('../../../bigbluebutton-js/src')
+const bbb = require('bigbluebutton-js')
 
 const api = bbb.api('', process.env.BBB_SECRET)
 const { parseXml } = bbb.util
