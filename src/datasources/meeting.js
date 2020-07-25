@@ -24,7 +24,6 @@ class MeetingAPI extends RESTDataSource {
 
   async getMeetingById({ id }) {
     const pathname = api.monitoring.getMeetingInfo(id)
-
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
 
@@ -47,11 +46,16 @@ class MeetingAPI extends RESTDataSource {
       attendeePW: attendeePassword,
       duration,
     })
-
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
 
-    console.log(json)
+    return json.returncode === 'SUCCESS' ? json : null
+  }
+
+  async endMeeting({ id, moderatorPassword }) {
+    const pathname = api.administration.end(id, moderatorPassword)
+    const xml = await this.get(pathname)
+    const json = parseXml(xml).response
 
     return json.returncode === 'SUCCESS' ? json : null
   }

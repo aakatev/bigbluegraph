@@ -14,9 +14,15 @@ const typeDefs = gql`
       moderatorPassword: String!
       attendeePassword: String!
     ): CreateMeetingResponse
+
+    endMeeting(id: String!, moderatorPassword: String!): EndMeetingResponse
   }
 
   type CreateMeetingResponse {
+    success: Boolean!
+  }
+
+  type EndMeetingResponse {
     success: Boolean!
   }
 

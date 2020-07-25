@@ -11,12 +11,22 @@ module.exports = {
       { name, id, duration, moderatorPassword, attendeePassword },
       { dataSources }
     ) => {
-      const meeting = await dataSources.meetingApi.createMeeting({
+      const result = await dataSources.meetingApi.createMeeting({
         name,
         id,
         duration,
         moderatorPassword,
         attendeePassword,
+      })
+
+      return {
+        success: true,
+      }
+    },
+    endMeeting: async (_, { id, moderatorPassword }, { dataSources }) => {
+      const result = await dataSources.meetingApi.endMeeting({
+        id,
+        moderatorPassword,
       })
 
       return {
