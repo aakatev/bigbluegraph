@@ -20,16 +20,16 @@ mutation CreateMeeting {
     id: "random-6811322"
     name: "Test"
     duration: 5 
-    attendeePassword: "lol" 
-    moderatorPassword: "lol"){
+    attendeePassword: "secret" 
+    moderatorPassword: "supersecret"){
     success
   }
 }
 
-mutation CreateMeeting {
+mutation EndMeeting {
   endMeeting(
     id: "random-6811322"
-    moderatorPassword: "lol"){
+    moderatorPassword: "supersecret"){
     success
   }
 }
