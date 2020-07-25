@@ -1,6 +1,6 @@
 <img src="./assets/logo.png" width="300" height="300">
 
-GraphQL API for your bigbluebutton server. Build with [bigbluebutton-js](https://aakatev.github.io/bigbluebutton-js-docs/). 
+GraphQL wrapper for your BigBlueButton server. Build with [bigbluebutton-js](https://aakatev.github.io/bigbluebutton-js-docs/). 
 
 **This repository is in active development!**
 
