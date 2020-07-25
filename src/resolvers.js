@@ -37,5 +37,18 @@ module.exports = {
         success: true,
       }
     },
+    deleteRecording: async (_, { id }, { dataSources }) => {
+      const result = await dataSources.recordingAPI.deleteRecording({
+        id,
+      })
+      if (!result) {
+        return {
+          success: false,
+        }
+      }
+      return {
+        success: true,
+      }
+    },
   },
 }

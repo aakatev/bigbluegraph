@@ -41,8 +41,8 @@ class RecordingAPI extends RESTDataSource {
     return Promise.all(ids.map((id) => this.getRecordingId({ id })))
   }
 
-  async deleteRecording({ id, moderatorPassword }) {
-    const pathname = api.administration.end(id, moderatorPassword)
+  async deleteRecording({ id }) {
+    const pathname = api.recording.deleteRecordings(id)
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
 
