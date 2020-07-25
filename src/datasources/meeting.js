@@ -24,8 +24,11 @@ class MeetingAPI extends RESTDataSource {
 
   async getMeetingById({ id }) {
     const pathname = api.monitoring.getMeetingInfo(id)
-    const response = await this.get(pathname)
-    return this.meetingReducer(response[0])
+
+    const xml = await this.get(pathname)
+    const json = parseXml(xml).response
+
+    return json.returncode === 'SUCCESS' ? this.meetingReducer(json) : null
   }
 
   getMeetingByIds({ ids }) {
@@ -35,7 +38,7 @@ class MeetingAPI extends RESTDataSource {
   meetingReducer(meeting) {
     return {
       id: meeting.meetingID,
-      // cursor: `${meeting.meeting_date_unix}`,
+      cursor: meeting.createTime,
       name: meeting.meetingName,
       created: meeting.createTime,
       running: meeting.running,

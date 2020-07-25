@@ -1,6 +1,6 @@
 {
-  "name": "fullstack-tutorial-server",
-  "version": "1.0.0",
+  "name": "bigbluebutton-graph",
+  "version": "0.0.1",
   "description": "",
   "main": "src/index.js",
   "scripts": {
