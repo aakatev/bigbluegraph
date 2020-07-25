@@ -1,4 +1,4 @@
-![BigBlueGraph Logo](assets/logo.png =250x250)
+<img src="./assets/logo.png" width="300" height="300">
 
 GraphQL API for your bigbluebutton server. Build with [bigbluebutton-js](https://aakatev.github.io/bigbluebutton-js-docs/). 
 
