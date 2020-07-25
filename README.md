@@ -30,32 +30,24 @@ mutation CreateMeeting {
   createMeeting(
     id: "random-6811322"
     name: "Test"
-    duration: 5 
-    attendeePassword: "lol" 
-    moderatorPassword: "lol"){
+    duration: 5
+    attendeePassword: "secret"
+    moderatorPassword: "supersecret"
+  ) {
     success
   }
 }
-
 
 mutation EndMeeting {
-  endMeeting(
-    id: "random-6811322"
-    moderatorPassword: "lol"){
+  endMeeting(id: "random-6811322", moderatorPassword: "supersecret") {
     success
   }
 }
-
 ```
 
 ## Example of Recording API Usage
 
 ```graphql
-mutation DeleteRecording {
-  deleteRecording(id: "41d1a1ff6f3219d667000ce58501f26ea703bc1e-1595623200678") {
-    success
-  }
-}
 
 query GetRecording {
   recording(id: "41d1a1ff6f3219d667000ce58501f26ea703bc1e-1595623200678") {
@@ -78,6 +70,14 @@ query GetRecordingByMeetingId2 {
     id
     meetingId
     published
+  }
+}
+
+mutation DeleteRecording {
+  deleteRecording(
+    id: "41d1a1ff6f3219d667000ce58501f26ea703bc1e-1595623200678"
+  ) {
+    success
   }
 }
 ```
