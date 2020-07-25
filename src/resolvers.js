@@ -4,8 +4,8 @@ module.exports = {
       dataSources.meetingAPI.getAllMeetings(),
     meeting: (_, { id }, { dataSources }) =>
       dataSources.meetingAPI.getMeetingById({ id }),
-    recording: (_, __, { dataSources }) =>
-      dataSources.recordingAPI.getAllRecordings(),
+    recording: (_, { id }, { dataSources }) =>
+      dataSources.recordingAPI.getRecordingById({ id }),
     recordings: (_, { meetingId }, { dataSources }) =>
       dataSources.recordingAPI.getRecordingByMeetingId({ meetingId }),
   },

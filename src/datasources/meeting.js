@@ -62,7 +62,6 @@ class MeetingAPI extends RESTDataSource {
   meetingReducer(meeting) {
     return {
       id: meeting.meetingID,
-      cursor: meeting.createTime,
       name: meeting.meetingName,
       created: meeting.createTime,
       running: meeting.running,

@@ -5,7 +5,7 @@ const typeDefs = gql`
     meetings: [Meeting]!
     meeting(id: ID!): Meeting
     recordings(meetingId: String): [Recording]!
-    recording: [Recording]!
+    recording(id: ID!): Recording
   }
 
   type Mutation {
