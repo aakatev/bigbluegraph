@@ -40,6 +40,28 @@ mutation CreateMeeting {
   }
 }
 
+mutation JoinMeetingModerator {
+  joinMeeting(
+    id: "random-6811322"
+    username: "Test"
+    password: "supersecret"
+  ) {
+    success
+    url
+  }
+}
+
+mutation JoinMeetingUser {
+  joinMeeting(
+    id: "random-6811322"
+    username: "Test"
+    password: "secret"
+  ) {
+    success
+    url
+  }
+}
+
 mutation EndMeeting {
   endMeeting(id: "random-6811322", moderatorPassword: "supersecret") {
     success

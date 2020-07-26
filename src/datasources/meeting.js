@@ -52,6 +52,10 @@ class MeetingAPI extends RESTDataSource {
   }
 
   async joinMeeting({ id, username, password }) {
+    const meeting = await this.getMeetingById({ id })
+    if (!meeting) {
+      return null
+    }
     const pathname =
       this.baseURL + api.administration.join(username, id, password)
 
