@@ -110,3 +110,17 @@ mutation DeleteRecording {
 }
 
 ```
+
+## Example of Subscriptions
+
+The subscriptions only work for the calls made through the GraphQL API.
+
+```grapql
+subscription SubscribeNewMeeting {
+  meetingCreated
+} 
+
+subscription SubscribeEndedMeeting {
+  meetingEnded
+} 
+```
