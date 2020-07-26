@@ -7,6 +7,12 @@ const RecordingAPI = require('./datasources/recording')
 
 const resolvers = require('./resolvers')
 
+let engine = process.env.APOLLO_KEY
+  ? {
+      reportSchema: true,
+    }
+  : {}
+
 const server = new ApolloServer({
   typeDefs,
   dataSources: () => ({
@@ -14,6 +20,7 @@ const server = new ApolloServer({
     recordingAPI: new RecordingAPI(),
   }),
   resolvers,
+  engine,
 })
 
 server.listen().then(({ url }) => {

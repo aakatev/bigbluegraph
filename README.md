@@ -11,7 +11,10 @@ Clone repo, and create `.env` file (or export as environmental variables) with t
 ```env
 BBB_URL=https://example.com/bigbluebutton/
 BBB_SECRET=bbb-secret-token
+APOLLO_KEY=optional-apollo-studio-key
 ```
+
+`APOLLO_KEY` is optional. Read more about Appollo Studio in the [official documentation](https://www.apollographql.com/docs/studio/).
 
 Now, launch GraphQL server with `npm run start`, and open your browser on [`localhost:4000`](http://localhost:4000).
 
