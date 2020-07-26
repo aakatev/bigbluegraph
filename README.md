@@ -115,7 +115,7 @@ mutation DeleteRecording {
 
 The subscriptions only work for the calls made through the GraphQL API.
 
-```grapql
+```graphql
 subscription SubscribeNewMeeting {
   meetingCreated
 } 
