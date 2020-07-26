@@ -10,18 +10,28 @@ const typeDefs = gql`
 
   type Mutation {
     createMeeting(
+      id: ID!
       name: String!
-      id: String!
       duration: Int!
       moderatorPassword: String!
       attendeePassword: String!
     ): CreateMeetingResponse
-    endMeeting(id: String!, moderatorPassword: String!): EndMeetingResponse
-    deleteRecording(id: String!): DeleteRecordingResponse
+    joinMeeting(
+      id: ID!
+      username: String!
+      password: String!
+    ): JoinMeetingResponse
+    endMeeting(id: ID!, moderatorPassword: String!): EndMeetingResponse
+    deleteRecording(id: ID!): DeleteRecordingResponse
   }
 
   type CreateMeetingResponse {
     success: Boolean!
+  }
+
+  type JoinMeetingResponse {
+    success: Boolean!
+    url: String
   }
 
   type EndMeetingResponse {

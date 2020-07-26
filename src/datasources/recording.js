@@ -10,6 +10,10 @@ class RecordingAPI extends RESTDataSource {
     this.baseURL = process.env.BBB_URL
   }
 
+  willSendRequest(request) {
+    request.headers.set('Accept', 'text/xml, application/json, text/plain, */*')
+  }
+
   async getRecordingsByMeetingId({ meetingId }) {
     const pathname = api.recording.getRecordings({ meetingID: meetingId })
     const xml = await this.get(pathname)

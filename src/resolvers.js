@@ -27,6 +27,22 @@ module.exports = {
         success: true,
       }
     },
+    joinMeeting: async (_, { id, username, password }, { dataSources }) => {
+      const result = await dataSources.meetingAPI.joinMeeting({
+        id,
+        username,
+        password,
+      })
+      if (!result) {
+        return {
+          success: false,
+        }
+      }
+      return {
+        url: result,
+        success: true,
+      }
+    },
     endMeeting: async (_, { id, moderatorPassword }, { dataSources }) => {
       const result = await dataSources.meetingAPI.endMeeting({
         id,

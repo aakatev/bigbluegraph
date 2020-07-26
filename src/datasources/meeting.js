@@ -51,6 +51,13 @@ class MeetingAPI extends RESTDataSource {
     return json.returncode === 'SUCCESS' ? json : null
   }
 
+  async joinMeeting({ id, username, password }) {
+    const pathname =
+      this.baseURL + api.administration.join(username, id, password)
+
+    return pathname
+  }
+
   async endMeeting({ id, moderatorPassword }) {
     const pathname = api.administration.end(id, moderatorPassword)
     const xml = await this.get(pathname)
