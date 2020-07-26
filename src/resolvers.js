@@ -62,13 +62,22 @@ module.exports = {
       const result = await dataSources.recordingAPI.deleteRecording({
         id,
       })
-      if (!result) {
+
+      if (result.returncode === 'SUCCESS') {
         return {
-          success: false,
+          success: true,
         }
       }
+
+      if (result.messageKey === 'notFound') {
+        return {
+          success: false,
+          message: 'recording was not found',
+        }
+      }
+
       return {
-        success: true,
+        success: false,
       }
     },
   },

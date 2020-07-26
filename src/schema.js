@@ -27,6 +27,7 @@ const typeDefs = gql`
 
   type CreateMeetingResponse {
     success: Boolean!
+    message: String
   }
 
   type JoinMeetingResponse {
@@ -36,10 +37,12 @@ const typeDefs = gql`
 
   type EndMeetingResponse {
     success: Boolean!
+    message: String
   }
 
   type DeleteRecordingResponse {
     success: Boolean!
+    message: String
   }
 
   type Meeting {
