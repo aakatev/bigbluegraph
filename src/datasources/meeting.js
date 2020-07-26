@@ -48,7 +48,7 @@ class MeetingAPI extends RESTDataSource {
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
 
-    return json.returncode === 'SUCCESS' ? json : null
+    return json
   }
 
   async joinMeeting({ id, username, password }) {
@@ -67,7 +67,7 @@ class MeetingAPI extends RESTDataSource {
     const xml = await this.get(pathname)
     const json = parseXml(xml).response
 
-    return json.returncode === 'SUCCESS' ? json : null
+    return json
   }
 
   meetingReducer(meeting) {

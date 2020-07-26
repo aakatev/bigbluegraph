@@ -23,8 +23,21 @@ module.exports = {
         attendeePassword,
       })
 
+      if (result.messageKey === 'duplicateWarning') {
+        return {
+          success: false,
+          message: 'meeting has already exist',
+        }
+      }
+
+      if (result.returncode === 'SUCCESS') {
+        return {
+          success: true,
+        }
+      }
+
       return {
-        success: true,
+        success: false,
       }
     },
     joinMeeting: async (_, { id, username, password }, { dataSources }) => {
@@ -36,6 +49,7 @@ module.exports = {
       if (!result) {
         return {
           success: false,
+          message: 'meeting was not found',
         }
       }
       return {
@@ -48,14 +62,22 @@ module.exports = {
         id,
         moderatorPassword,
       })
-      if (!result) {
+
+      if (result.returncode === 'SUCCESS') {
+        return {
+          success: true,
+        }
+      }
+
+      if (result.messageKey === 'notFound') {
         return {
           success: false,
+          message: 'meeting was not found',
         }
       }
 
       return {
-        success: true,
+        success: false,
       }
     },
     deleteRecording: async (_, { id }, { dataSources }) => {

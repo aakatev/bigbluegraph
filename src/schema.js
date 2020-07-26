@@ -32,6 +32,7 @@ const typeDefs = gql`
 
   type JoinMeetingResponse {
     success: Boolean!
+    message: String
     url: String
   }
 
