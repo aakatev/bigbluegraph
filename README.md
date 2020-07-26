@@ -40,36 +40,33 @@ mutation CreateMeeting {
     moderatorPassword: "supersecret"
   ) {
     success
+    message
   }
 }
 
 mutation JoinMeetingModerator {
-  joinMeeting(
-    id: "random-6811322"
-    username: "Test"
-    password: "supersecret"
-  ) {
+  joinMeeting(id: "random-6811322", username: "Test", password: "supersecret") {
     success
     url
+    message
   }
 }
 
 mutation JoinMeetingUser {
-  joinMeeting(
-    id: "random-6811322"
-    username: "Test"
-    password: "secret"
-  ) {
+  joinMeeting(id: "random-6811322", username: "Test", password: "secret") {
     success
     url
+    message
   }
 }
 
 mutation EndMeeting {
   endMeeting(id: "random-6811322", moderatorPassword: "supersecret") {
     success
+    message
   }
 }
+
 ```
 
 ## Example of Recording API Usage
@@ -108,6 +105,8 @@ mutation DeleteRecording {
     id: "41d1a1ff6f3219d667000ce58501f26ea703bc1e-1595623200678"
   ) {
     success
+    message
   }
 }
+
 ```
