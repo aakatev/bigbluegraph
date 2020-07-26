@@ -1,3 +1,8 @@
+const { PubSub } = require('apollo-server')
+const { MEETING_CREATED, MEETING_ENDED } = require('./events')
+
+const pubsub = new PubSub()
+
 module.exports = {
   Query: {
     meetings: (_, __, { dataSources }) =>
@@ -31,6 +36,7 @@ module.exports = {
       }
 
       if (result.returncode === 'SUCCESS') {
+        pubsub.publish(MEETING_CREATED, { meetingCreated: result.meetingID })
         return {
           success: true,
         }
@@ -64,6 +70,7 @@ module.exports = {
       })
 
       if (result.returncode === 'SUCCESS') {
+        pubsub.publish(MEETING_ENDED, { meetingEnded: id })
         return {
           success: true,
         }
@@ -101,6 +108,14 @@ module.exports = {
       return {
         success: false,
       }
+    },
+  },
+  Subscription: {
+    meetingCreated: {
+      subscribe: () => pubsub.asyncIterator([MEETING_CREATED]),
+    },
+    meetingEnded: {
+      subscribe: () => pubsub.asyncIterator([MEETING_ENDED]),
     },
   },
 }

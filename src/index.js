@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const { ApolloServer } = require('apollo-server')
+
 const typeDefs = require('./schema')
 const MeetingAPI = require('./datasources/meeting')
 const RecordingAPI = require('./datasources/recording')

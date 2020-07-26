@@ -25,6 +25,11 @@ const typeDefs = gql`
     deleteRecording(id: ID!): DeleteRecordingResponse
   }
 
+  type Subscription {
+    meetingCreated: ID!
+    meetingEnded: ID!
+  }
+
   type CreateMeetingResponse {
     success: Boolean!
     message: String

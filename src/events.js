@@ -1,0 +1,4 @@
+module.exports = {
+  MEETING_CREATED: 'MEETING_CREATED',
+  MEETING_ENDED: 'MEETING_ENDED',
+}
