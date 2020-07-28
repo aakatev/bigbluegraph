@@ -59,6 +59,7 @@ class RecordingAPI extends RESTDataSource {
       meetingId: recording.meetingID,
       url: recording.playback.format.url,
       published: recording.published,
+      thumbnails: recording.playback.format.preview.images.image,
     }
   }
 }

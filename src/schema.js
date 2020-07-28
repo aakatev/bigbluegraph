@@ -65,6 +65,7 @@ const typeDefs = gql`
     meetingId: String!
     url: String!
     published: Boolean!
+    thumbnails: [String]!
   }
 `
 
