@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery, gql } from '@apollo/client'
 
 import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
 
 const GET_MEETINGS = gql`
   query GetMeetings {
@@ -15,22 +14,21 @@ const GET_MEETINGS = gql`
 `
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
   },
 }))
 
-const MeetingsContainer = () => {
-  const classes = useStyles()
-  return (
-    <Container maxWidth="lg" className={classes.container}>
-      <Meetings />
-    </Container>
-  )
-}
-
 function Meetings() {
+  const classes = useStyles()
   const { loading, error, data } = useQuery(GET_MEETINGS)
 
   if (loading) return <p>Loading...</p>
@@ -49,4 +47,4 @@ function Meetings() {
   ))
 }
 
-export default MeetingsContainer
+export default Meetings

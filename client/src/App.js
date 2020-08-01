@@ -4,11 +4,12 @@ import { Switch, Route } from 'react-router'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import Navigation from './components/navigation/navigation'
+import Navigation from './components/navigation/container'
 
 import Landing from './components/landing'
-import Meetings from './components/meetings'
-import Recordings from './components/recordings'
+import Meetings from './components/meetings/container'
+import Recordings from './components/recordings/container'
+import Settings from './components/settings'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/meetings" component={Meetings} />
           <Route exact path="/recordings" component={Recordings} />
+          <Route exact path="/settings" component={Settings} />
         </Switch>
       </main>
     </div>

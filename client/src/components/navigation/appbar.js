@@ -65,7 +65,7 @@ const NavigationAppBar = ({ handleDrawerOpen, open }) => {
           noWrap
           className={classes.title}
         >
-          Dashboard
+          BigBlueGraph
         </Typography>
         <IconButton color="inherit">
           <Badge badgeContent={4} color="secondary">

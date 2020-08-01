@@ -3,7 +3,7 @@ import React from 'react'
 import NavigationAppBar from './appbar'
 import NavigationDrawer from './drawer'
 
-const Navigation = () => {
+const NavigationContainer = () => {
   const [open, setOpen] = React.useState(true)
 
   const handleDrawerOpen = () => {
@@ -21,4 +21,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavigationContainer
