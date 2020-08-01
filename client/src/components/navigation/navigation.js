@@ -14,10 +14,10 @@ const Navigation = () => {
   }
 
   return (
-    <span>
+    <>
       <NavigationAppBar handleDrawerOpen={handleDrawerOpen} open={open} />
       <NavigationDrawer handleDrawerClose={handleDrawerClose} open={open} />
-    </span>
+    </>
   )
 }
 

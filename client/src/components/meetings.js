@@ -1,6 +1,8 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client'
-import { Button, Icon, Item } from 'semantic-ui-react'
+
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 
 const GET_MEETINGS = gql`
   query GetMeetings {
@@ -12,11 +14,21 @@ const GET_MEETINGS = gql`
   }
 `
 
-const MeetingsContainer = () => (
-  <Item.Group divided>
-    <Meetings />
-  </Item.Group>
-)
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+}))
+
+const MeetingsContainer = () => {
+  const classes = useStyles()
+  return (
+    <Container maxWidth="lg" className={classes.container}>
+      <Meetings />
+    </Container>
+  )
+}
 
 function Meetings() {
   const { loading, error, data } = useQuery(GET_MEETINGS)
@@ -27,19 +39,13 @@ function Meetings() {
   if (data.meetings.length === 0) return <p>No meetings were found</p>
 
   return data.meetings.map(({ id, name, running }) => (
-    <Item key={id}>
-      <Item.Content>
-        <Item.Header as="a">{id}</Item.Header>
-        <Item.Meta>{name} </Item.Meta>
-        <Item.Description>{running ? 'running' : 'no users'}</Item.Description>
-        <Item.Extra>
-          <Button primary floated="right">
-            Join
-            <Icon name="right chevron" />
-          </Button>
-        </Item.Extra>
-      </Item.Content>
-    </Item>
+    <div key={id}>
+      <div>
+        <h3>{id}</h3>
+        <p>{name} </p>
+        <p>{running ? 'running' : 'no users'}</p>
+      </div>
+    </div>
   ))
 }
 

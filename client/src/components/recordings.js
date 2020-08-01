@@ -1,7 +1,8 @@
 import React from 'react'
-import { Grid, Segment, Card, Button, Image } from 'semantic-ui-react'
-
 import { useQuery, gql } from '@apollo/client'
+
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 
 const GET_RECORDINDS = gql`
   query GetRecordings {
@@ -15,11 +16,19 @@ const GET_RECORDINDS = gql`
   }
 `
 
-function RecordingsContainer() {
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+}))
+
+const RecordingsContainer = () => {
+  const classes = useStyles()
   return (
-    <Card.Group>
+    <Container maxWidth="lg" className={classes.container}>
       <Recordings />
-    </Card.Group>
+    </Container>
   )
 }
 
@@ -31,24 +40,14 @@ function Recordings() {
 
   return data.recordings.map(
     ({ id, meetingId, url, thumbnails, published }) => (
-      <Card key={id}>
-        <Image src={thumbnails[0]} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>Recording {id.slice(0, 5)}...</Card.Header>
-          <Card.Meta>{published ? 'published' : 'not published'}</Card.Meta>
-          <Card.Description>Meeting {meetingId}</Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="green">
-              View
-            </Button>
-            <Button basic color="red">
-              Delete
-            </Button>
-          </div>
-        </Card.Content>
-      </Card>
+      <div key={id}>
+        <img src={thumbnails[0]} />
+        <div>
+          <p>Recording {id.slice(0, 5)}...</p>
+          <p>{published ? 'published' : 'not published'}</p>
+          <p>Meeting {meetingId}</p>
+        </div>
+      </div>
     )
   )
 }

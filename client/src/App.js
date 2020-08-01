@@ -7,8 +7,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Navigation from './components/navigation/navigation'
 
 import Landing from './components/landing'
-// import Meetings from './components/meetings'
-// import Recordings from './components/recordings'
+import Meetings from './components/meetings'
+import Recordings from './components/recordings'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,8 +32,8 @@ function App() {
         <div className={classes.appBarSpacer} />
         <Switch>
           <Route exact path="/" component={Landing} />
-          {/* <Route exact path="/meetings" component={Meetings} />
-          <Route exact path="/recordings" component={Recordings} /> */}
+          <Route exact path="/meetings" component={Meetings} />
+          <Route exact path="/recordings" component={Recordings} />
         </Switch>
       </main>
     </div>
