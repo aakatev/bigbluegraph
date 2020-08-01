@@ -1,22 +1,41 @@
 import React from 'react'
-import Meetings from './components/meetings'
-import Navigation from './components/navigation'
-import Landing from './components/landing'
 import { Switch, Route } from 'react-router'
-import { Container } from 'semantic-ui-react'
-import Recordings from './components/recordings'
+
+import { makeStyles } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
+import Navigation from './components/navigation/navigation'
+
+import Landing from './components/landing'
+// import Meetings from './components/meetings'
+// import Recordings from './components/recordings'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  appBarSpacer: theme.mixins.toolbar,
+}))
 
 function App() {
+  const classes = useStyles()
   return (
-    <div>
+    <div className={classes.root}>
+      <CssBaseline />
       <Navigation />
-      <Container text style={{ marginTop: '5em' }}>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/meetings" component={Meetings} />
-          <Route exact path="/recordings" component={Recordings} />
+          {/* <Route exact path="/meetings" component={Meetings} />
+          <Route exact path="/recordings" component={Recordings} /> */}
         </Switch>
-      </Container>
+      </main>
     </div>
   )
 }

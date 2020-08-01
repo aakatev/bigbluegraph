@@ -17,9 +17,9 @@ const GET_RECORDINDS = gql`
 
 function RecordingsContainer() {
   return (
-    <Grid container columns={3} stackable>
+    <Card.Group>
       <Recordings />
-    </Grid>
+    </Card.Group>
   )
 }
 
@@ -31,26 +31,24 @@ function Recordings() {
 
   return data.recordings.map(
     ({ id, meetingId, url, thumbnails, published }) => (
-      <Grid.Column key={id}>
-        <Card>
-          <Image src={thumbnails[0]} wrapped ui={false} />
-          <Card.Content>
-            <Card.Header>Recording {id.slice(0, 5)}...</Card.Header>
-            <Card.Meta>{published ? 'published' : 'not published'}</Card.Meta>
-            <Card.Description>Meeting {meetingId}</Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <div className="ui two buttons">
-              <Button basic color="green">
-                View
-              </Button>
-              <Button basic color="red">
-                Delete
-              </Button>
-            </div>
-          </Card.Content>
-        </Card>
-      </Grid.Column>
+      <Card key={id}>
+        <Image src={thumbnails[0]} wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>Recording {id.slice(0, 5)}...</Card.Header>
+          <Card.Meta>{published ? 'published' : 'not published'}</Card.Meta>
+          <Card.Description>Meeting {meetingId}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <div className="ui two buttons">
+            <Button basic color="green">
+              View
+            </Button>
+            <Button basic color="red">
+              Delete
+            </Button>
+          </div>
+        </Card.Content>
+      </Card>
     )
   )
 }
