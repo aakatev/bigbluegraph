@@ -14,10 +14,10 @@ const NavigationContainer = () => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <NavigationAppBar handleDrawerOpen={handleDrawerOpen} open={open} />
       <NavigationDrawer handleDrawerClose={handleDrawerClose} open={open} />
-    </>
+    </React.Fragment>
   )
 }
 

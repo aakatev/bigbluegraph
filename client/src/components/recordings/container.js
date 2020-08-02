@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
 import Recordings from './recordings'
+import Title from '../title'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,6 +17,7 @@ const RecordingsContainer = () => {
   const classes = useStyles()
   return (
     <Container maxWidth="lg" className={classes.container}>
+      <Title>Recordings</Title>
       <Recordings />
     </Container>
   )
