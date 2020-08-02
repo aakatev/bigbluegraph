@@ -1,6 +1,8 @@
 require('dotenv').config()
 
-const { ApolloServer } = require('apollo-server')
+const path = require('path')
+const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express')
 
 const typeDefs = require('./schema')
 const MeetingAPI = require('./datasources/meeting')
@@ -24,6 +26,18 @@ const server = new ApolloServer({
   engine,
 })
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
-})
+const app = express()
+server.applyMiddleware({ app })
+
+if (process.env.ENABLE_CLIENT) {
+  staticPath =
+    process.env.STATIC_PATH || path.resolve(__dirname, '..', 'client', 'build')
+  app.use(express.static(staticPath))
+  app.get('*', function (request, response) {
+    response.sendFile(path.resolve(staticPath, 'index.html'))
+  })
+}
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+)
